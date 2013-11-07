@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Edit Skills</h1>
+
+  <form action="/skills" method="POST">
+    <table border="1">
+      <!-- headers -->
+      <tr>
+        <th></th>
+        <th>Skill</th>
+        <th>Years</th>
+        <th>Formal</th>
+      </tr>
+      <% @skills.each do |skill| %>
+        <tr>
+          <td>
+            <input type="checkbox" name="proficiencies[]" value="<%= skill.id %>" <% if @user_skills.include?(skill) %> checked <% end %>>
+          </td>
+          <td><%= skill.name %> (<%= skill.context %>)</td>
+          <td>
+            <input type="number" name="years_of_experience[]" value="">
+          </td>
+          <td>
+            <input type="checkbox" name="formal_education[]" value="<%= skill.id %>">
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <input type="submit">
+  </form>
+</div>
