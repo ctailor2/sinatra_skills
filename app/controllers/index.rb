@@ -17,7 +17,7 @@ get '/skills/edit' do
   end
 end
 
-post '/skills' do
+post '/skills' do  
   years_of_experience = params[:years_of_experience]
   skill_ids = params[:proficiencies]
   formal_education = params[:formal_education]

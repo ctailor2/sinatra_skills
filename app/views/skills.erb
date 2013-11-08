@@ -11,16 +11,17 @@
         <th>Formal</th>
       </tr>
       <% @skills.each do |skill| %>
+        <% proficiency = current_user.proficiencies.where(:skill_id => skill.id).first %>
         <tr>
           <td>
             <input type="checkbox" name="proficiencies[]" value="<%= skill.id %>" <% if @user_skills.include?(skill) %> checked <% end %>>
           </td>
           <td><%= skill.name %> (<%= skill.context %>)</td>
           <td>
-            <input type="number" name="years_of_experience[]" value="">
+            <input type="number" name="years_of_experience[]" value="<%= proficiency.try(:years_of_experience) %>">
           </td>
           <td>
-            <input type="checkbox" name="formal_education[]" value="<%= skill.id %>">
+            <input type="checkbox" name="formal_education[]" value="<%= proficiency.try(:formal_education) %>">
           </td>
         </tr>
       <% end %>
